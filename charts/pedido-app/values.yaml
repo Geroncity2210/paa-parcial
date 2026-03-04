@@ -1,0 +1,72 @@
+global:
+  version: "0.1.0"
+
+frontend:
+  replicaCount: 2
+  image:
+    repository: 1jul/front-taller2
+    tag: "latest"
+    imagePullPolicy: IfNotPresent
+  service:
+    port: 80
+  resources:
+    requests:
+      cpu: "25m"
+      memory: "128Mi"
+    limits:
+      memory: "256Mi"
+  readinessProbe:
+    initialDelaySeconds : 5
+    periodSeconds: 5
+  livenessProbe:
+    initialDelaySeconds : 10
+    periodSeconds: 10
+
+
+backend:
+  replicaCount: 2
+  image:
+    repository:  1jul/front-taller2
+    tag: "latest"
+    pullPolicy:  IfNotPresent
+  service:
+    port: 8080
+  resources:
+    requests:
+      cpu: "50m"
+      memory: "256Mi"
+    limits:
+      memory: "512Mi"
+  readinessProbe:
+    initialDelaySeconds : 5
+    periodSeconds: 5
+  livenessProbe:
+    initialDelaySeconds : 10
+    periodSeconds: 10
+  
+  hpa:
+    minReplicas: 2
+    maxReplicas: 6
+    cpuUtilization: 75
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "256Mi"
+      limits:
+        cpu: "500m"
+        memory: "512Mi"
+
+postgresql:
+  primary:
+    persistence:
+      enabled: true
+      size: 1Gi
+  auth:
+    username: db_user
+    database: animales-db
+    password: "root"
+    postgresPassword: "admin"
+    existingSecret: "db-secret"
+    secretKeys:
+      adminPasswordKey: postgres-password
+      userPasswordKey: user-password

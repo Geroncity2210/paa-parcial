@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-backend
+spec:
+  replicas: {{.Values.backend.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: backend
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: backend
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: backend
+          image: {{.Values.backend.image.repository}} : {{.Values.backend.image.tag}}
+          imagePullPolicy: {{ .Values.backend.image.pullPolicy | default "IfNotPresent" }}
+          ports:
+            - containerPort: {{.Values.backend.service.port}}
+            
+          envFrom:
+            - configMapRef:
+              name: {{ .Release.Name }}-backend-config
+            - secretRef:
+              name: {{ .Release.Name }}-db-secret
+          
+          
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: {{.Values.backend.service.port}}
+            initialDelaySeconds: {{.Values.backend.readinessProbe.initialDelaySeconds}}
+            periodSeconds: {{.Values.backend.readinessProbe.periodSeconds}}
+          
+          
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: {{.Values.backend.service.port}}
+            initialDelaySeconds: {{.Values.backend.livenessProbe.initialDelaySeconds}}
+            periodSeconds: {{.Values.backend.readinessProbe.periodSeconds}}
+          
+          
+          resources:
+            requests:
+              cpu:  {{.Values.backend.resources.requests.cpu}}
+              memory: {{.Values.backend.resources.requests.memory}}
+            limits:
+              memory: {{.Values.backend.resources.limits.memory}}
