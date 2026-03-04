@@ -2,6 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Release.Name }}-frontend
+  labels:
+    app.kubernetes.io/name: frontend
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Values.global.version }}
 spec:
   replicas: {{ .Values.frontend.replicaCount }}
   selector:
@@ -16,7 +20,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: {{.Values.frontend.image.repository}} : {{.Values.frontend.image.tag}}
+          image: {{.Values.frontend.image.repository}}:{{.Values.frontend.image.tag}}
           imagePullPolicy: {{ .Values.frontend.image.pullPolicy | default "IfNotPresent" }}
           ports:
             - containerPort: {{.Values.frontend.service.port}}
@@ -31,7 +35,7 @@ spec:
               path: /
               port: {{.Values.frontend.service.port}}
             initialDelaySeconds: {{.Values.frontend.livenessProbe.initialDelaySeconds}}
-            periodSeconds: {{.Values.frontend.readinessProbe.periodSeconds}}
+            periodSeconds: {{.Values.frontend.livenessProbe.periodSeconds}}
           resources:
             requests:
               cpu:  {{.Values.frontend.resources.requests.cpu}}

@@ -2,6 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Release.Name }}-backend
+  labels:
+    app.kubernetes.io/name: backend
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Values.global.version }}
 spec:
   replicas: {{.Values.backend.replicaCount }}
   selector:
@@ -16,16 +20,15 @@ spec:
     spec:
       containers:
         - name: backend
-          image: {{.Values.backend.image.repository}} : {{.Values.backend.image.tag}}
+          image: {{.Values.backend.image.repository}}:{{.Values.backend.image.tag}}
           imagePullPolicy: {{ .Values.backend.image.pullPolicy | default "IfNotPresent" }}
           ports:
             - containerPort: {{.Values.backend.service.port}}
-            
           envFrom:
             - configMapRef:
               name: {{ .Release.Name }}-backend-config
             - secretRef:
-              name: {{ .Release.Name }}-db-secret
+              name: {{ .Release.Name }}-backend-secret
           
           
           readinessProbe:
@@ -41,7 +44,7 @@ spec:
               path: /api/health
               port: {{.Values.backend.service.port}}
             initialDelaySeconds: {{.Values.backend.livenessProbe.initialDelaySeconds}}
-            periodSeconds: {{.Values.backend.readinessProbe.periodSeconds}}
+            periodSeconds: {{.Values.backend.livenessProbe.periodSeconds}}
           
           
           resources:

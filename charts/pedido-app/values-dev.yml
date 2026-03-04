@@ -1,1 +1,33 @@
-# TODO
+global:
+  version: "0.1.0-dev"
+
+backend:
+  replicaCount: 1
+  image:
+    tag: "latest"
+  resources:
+    requests:
+      cpu: "50m"
+      memory: "128Mi"
+    limits:
+      cpu: "200m"
+      memory: "256Mi"
+  hpa:
+    minReplicas: 1
+    maxReplicas: 3
+
+frontend:
+  replicaCount: 1
+  image:
+    tag: "latest"
+  resources:
+    requests:
+      cpu: "25m"
+      memory: "64Mi"
+
+postgresql:
+  primary:
+    persistence:
+      size: 1Gi        # BD pequeña en dev
+  auth:
+    database: pedidos_db_dev

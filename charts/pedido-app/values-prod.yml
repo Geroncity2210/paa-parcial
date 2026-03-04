@@ -1,1 +1,33 @@
-# TODO
+global:
+  version: "1.0.0"
+
+backend:
+  replicaCount: 3
+  image:
+    tag: "1.0.0"
+  resources:
+    requests:
+      cpu: "200m"
+      memory: "512Mi"
+    limits:
+      cpu: "1000m"
+      memory: "1Gi"
+  hpa:
+    minReplicas: 3
+    maxReplicas: 6
+
+frontend:
+  replicaCount: 2
+  image:
+    tag: "1.0.0"
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+
+postgresql:
+  primary:
+    persistence:
+      size: 20Gi       # BD más grande en prod
+  auth:
+    database: pedidos_db
