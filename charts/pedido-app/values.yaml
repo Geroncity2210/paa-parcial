@@ -26,8 +26,8 @@ frontend:
 backend:
   replicaCount: 2
   image:
-    repository:  1jul/front-taller2
-    tag: "latest"
+    repository: geroncity2210/backend-parcial
+    tag: "1.0.0"
     pullPolicy:  IfNotPresent
   service:
     port: 8080
@@ -62,11 +62,18 @@ postgresql:
       enabled: true
       size: 1Gi
   auth:
+    #Usados por secrets.yaml
     username: db_user
-    database: animales-db
     password: "root"
-    postgresPassword: "admin"
-    existingSecret: "db-secret"
-    secretKeys:
-      adminPasswordKey: postgres-password
-      userPasswordKey: user-password
+    #FIN Usados por secrets.yaml
+
+    #Usados por configmap.yml
+    database: animales-db
+    #FIN Usados por configmap.yml
+
+    # Esto de aquí no se va a usar pero igual lo dejo
+    # postgresPassword: "admin"
+    # existingSecret: "db-secret"
+    # secretKeys:
+    #   adminPasswordKey: postgres-password
+    #   userPasswordKey: user-password
