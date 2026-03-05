@@ -11,5 +11,5 @@ spec:
     app.kubernetes.io/name: frontend
     app.kubernetes.io/instance: {{ .Release.Name }}
   ports:
-    - port: {{.Values.frontend.service.port}}
-      targetPort: {{.Values.frontend.service.port}}
+    - port: {{.Values.service.port}}
+      targetPort: {{.Values.service.port}}
