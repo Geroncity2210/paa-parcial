@@ -26,11 +26,10 @@ spec:
             - containerPort: {{.Values.service.port}}
           envFrom:
             - configMapRef:
-              name: {{ .Release.Name }}-backend-config
+                name: {{ .Release.Name }}-backend-config
             - secretRef:
-              name: {{ .Release.Name }}-backend-secret
-          
-          
+                name: {{ .Release.Name }}-backend-secret
+
           readinessProbe:
             httpGet:
               path: /api/health
@@ -38,14 +37,12 @@ spec:
             initialDelaySeconds: {{.Values.readinessProbe.initialDelaySeconds}}
             periodSeconds: {{.Values.readinessProbe.periodSeconds}}
           
-          
           livenessProbe:
             httpGet:
               path: /api/health
               port: {{.Values.service.port}}
             initialDelaySeconds: {{.Values.livenessProbe.initialDelaySeconds}}
             periodSeconds: {{.Values.livenessProbe.periodSeconds}}
-          
           
           resources:
             requests:
