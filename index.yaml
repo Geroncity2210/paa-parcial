@@ -3,7 +3,7 @@ entries:
   pedido-app:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-05T18:33:22.3855423-05:00"
+    created: "2026-03-05T18:50:49.1914564-05:00"
     dependencies:
     - name: postgresql
       repository: https://charts.bitnami.com/bitnami
@@ -13,6 +13,6 @@ entries:
     name: pedido-app
     type: application
     urls:
-    - https://Geroncity2210.github.io/paa-parcial/pedido-app-0.1.0.tgz
+    - https://Geroncity2210.github.io/paa-parcial/charts/pedido-app-0.1.0.tgz
     version: 0.1.0
-generated: "2026-03-05T18:33:22.3623616-05:00"
+generated: "2026-03-05T18:50:49.172587-05:00"
