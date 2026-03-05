@@ -25,9 +25,9 @@ spec:
 
   syncPolicy:
     automated:
-      prune: true       # Elimina recursos que ya no están en Git
-      selfHeal: true    # Corrige cambios manuales no deseados en el clúster
+      prune: true       
+      selfHeal: true    
     syncOptions:
-      - CreateNamespace=true    # Crea el namespace si no existe
+      - CreateNamespace=true    
       - PrunePropagationPolicy=foreground
       - PruneLast=true
