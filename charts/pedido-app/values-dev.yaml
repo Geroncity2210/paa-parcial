@@ -25,5 +25,3 @@ postgresql:
   primary:
     persistence:
       size: 1Gi # BD pequeña en dev
-  auth:
-    database: animales-db-dev
