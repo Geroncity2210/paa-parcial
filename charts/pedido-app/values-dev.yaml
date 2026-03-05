@@ -1,10 +1,19 @@
 global:
-  version: "0.1.0-dev"
+  version: "1.1.0"
+
+frontend:
+  replicaCount: 1
+  image:
+    tag: "latest"
+  resources:
+    requests:
+      cpu: "25m"
+      memory: "64Mi"
 
 backend:
   replicaCount: 1
   image:
-    tag: "latest"
+    tag: "1.0.0"
   resources:
     requests:
       cpu: "50m"
@@ -16,18 +25,9 @@ backend:
     minReplicas: 1
     maxReplicas: 3
 
-frontend:
-  replicaCount: 1
-  image:
-    tag: "latest"
-  resources:
-    requests:
-      cpu: "25m"
-      memory: "64Mi"
-
 postgresql:
   primary:
     persistence:
-      size: 1Gi        # BD pequeña en dev
+      size: 1Gi # BD pequeña en dev
   auth:
     database: pedidos_db_dev
