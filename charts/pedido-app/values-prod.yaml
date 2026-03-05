@@ -22,7 +22,7 @@ backend:
     maxReplicas: 6
 
 ingress:
-  host: pedido-prod.local
+  host: prod.127.0.0.1.sslip.io
 
 postgresql:
   primary:
