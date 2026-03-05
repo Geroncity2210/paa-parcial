@@ -4,7 +4,7 @@ global:
   db:
     username: db_user
     password: "root"
-    database: animales-db
+    database: animalesdb
 
 frontend:
   replicaCount: 2
@@ -70,7 +70,7 @@ postgresql:
     #FIN Usados por secrets.yaml
 
     #Usados por configmap.yml
-    database: animales-db
+    database: animalesdb
     #FIN Usados por configmap.yml
 
     # Esto de aquí y lo de arriba se va a utilizar para configurar el chart de posgre
