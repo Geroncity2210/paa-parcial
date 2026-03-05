@@ -1,6 +1,11 @@
 global:
   version: "1.0.0"
 
+  db:
+    username: db_user
+    password: "root"
+    database: animales-db
+
 frontend:
   replicaCount: 2
   image:

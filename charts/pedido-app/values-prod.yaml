@@ -27,5 +27,4 @@ postgresql:
   primary:
     persistence:
       size: 5Gi # BD más grande en prod
-  auth:
-    database: pedidos_db
+

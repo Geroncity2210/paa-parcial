@@ -30,4 +30,4 @@ postgresql:
     persistence:
       size: 1Gi # BD pequeña en dev
   auth:
-    database: pedidos_db_dev
+    database: animales-db-dev
