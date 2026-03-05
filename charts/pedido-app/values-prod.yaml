@@ -21,6 +21,9 @@ backend:
     minReplicas: 3
     maxReplicas: 6
 
+ingress:
+  host: pedido-prod.local
+
 postgresql:
   primary:
     persistence:
