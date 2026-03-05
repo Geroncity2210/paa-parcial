@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/version: {{ .Values.global.version }}
 spec:
-  replicas: {{.Values.backend.replicaCount }}
+  replicas: {{.Values.replicaCount }}
   selector:
     matchLabels:
       app.kubernetes.io/name: backend
@@ -20,10 +20,10 @@ spec:
     spec:
       containers:
         - name: backend
-          image: {{.Values.backend.image.repository}}:{{.Values.backend.image.tag}}
-          imagePullPolicy: {{ .Values.backend.image.pullPolicy | default "IfNotPresent" }}
+          image: {{.Values.image.repository}}:{{.Values.image.tag}}
+          imagePullPolicy: {{ .Values.image.pullPolicy | default "IfNotPresent" }}
           ports:
-            - containerPort: {{.Values.backend.service.port}}
+            - containerPort: {{.Values.service.port}}
           envFrom:
             - configMapRef:
               name: {{ .Release.Name }}-backend-config
@@ -34,22 +34,22 @@ spec:
           readinessProbe:
             httpGet:
               path: /api/health
-              port: {{.Values.backend.service.port}}
-            initialDelaySeconds: {{.Values.backend.readinessProbe.initialDelaySeconds}}
-            periodSeconds: {{.Values.backend.readinessProbe.periodSeconds}}
+              port: {{.Values.service.port}}
+            initialDelaySeconds: {{.Values.readinessProbe.initialDelaySeconds}}
+            periodSeconds: {{.Values.readinessProbe.periodSeconds}}
           
           
           livenessProbe:
             httpGet:
               path: /api/health
-              port: {{.Values.backend.service.port}}
-            initialDelaySeconds: {{.Values.backend.livenessProbe.initialDelaySeconds}}
-            periodSeconds: {{.Values.backend.livenessProbe.periodSeconds}}
+              port: {{.Values.service.port}}
+            initialDelaySeconds: {{.Values.livenessProbe.initialDelaySeconds}}
+            periodSeconds: {{.Values.livenessProbe.periodSeconds}}
           
           
           resources:
             requests:
-              cpu:  {{.Values.backend.resources.requests.cpu}}
-              memory: {{.Values.backend.resources.requests.memory}}
+              cpu:  {{.Values.resources.requests.cpu}}
+              memory: {{.Values.resources.requests.memory}}
             limits:
-              memory: {{.Values.backend.resources.limits.memory}}
+              memory: {{.Values.resources.limits.memory}}
