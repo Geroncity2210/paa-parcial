@@ -1,1 +1,33 @@
-# TODO
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pedido-app-prod
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: pedido-app
+    app.kubernetes.io/instance: prod
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Geroncity2210/paa-parcial
+    targetRevision: HEAD
+    path: charts/pedido-app
+    helm:
+      valueFiles:
+        - values-prod.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: pedido-app-prod
+
+  syncPolicy:
+    automated:
+      prune: true       # Elimina recursos que ya no están en Git
+      selfHeal: true    # Corrige cambios manuales no deseados en el clúster
+    syncOptions:
+      - CreateNamespace=true    # Crea el namespace si no existe
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
