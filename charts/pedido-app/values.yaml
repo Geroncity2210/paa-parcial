@@ -70,9 +70,9 @@ postgresql:
     database: animales-db
     #FIN Usados por configmap.yml
 
-    # Esto de aquí no se va a usar pero igual lo dejo
-    # postgresPassword: "admin"
-    # existingSecret: "db-secret"
-    # secretKeys:
-    #   adminPasswordKey: postgres-password
-    #   userPasswordKey: user-password
+    # Esto de aquí y lo de arriba se va a utilizar para configurar el chart de posgre
+    postgresPassword: "admin"
+    existingSecret: "db-secret"
+    secretKeys:
+      adminPasswordKey: postgres-password
+      userPasswordKey: user-password
