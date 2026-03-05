@@ -29,8 +29,8 @@ frontend:
 backend:
   replicaCount: 2
   image:
-    repository: geroncity2210/backend-parcial
-    tag: "1.1.0"
+    repository: 1jul/back-taller2
+    tag: "latest"
   service:
     port: 8080
   resources:
