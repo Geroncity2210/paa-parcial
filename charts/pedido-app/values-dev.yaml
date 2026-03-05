@@ -3,8 +3,6 @@ global:
 
 frontend:
   replicaCount: 1
-  image:
-    tag: "latest"
   resources:
     requests:
       cpu: "25m"
