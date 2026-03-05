@@ -8,4 +8,4 @@ metadata:
 data:
   DB_HOST: "{{ .Release.Name }}-postgresql"
   DB_PORT: "5432"
-  DB_NAME: "{{ .Values.postgresql.auth.database }}"
+  DB_NAME: "{{ .Values.global.db.database }}"
