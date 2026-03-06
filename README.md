@@ -4,6 +4,10 @@
 - Diego Norberto Diaz Algarin: AKA 1JuL
 - Juan Pablo Moreno Patarroyo: AKA Geroncity2210
 
+## Vídeo de demostración
+
+https://youtu.be/lxmC-G6Z8x4
+
 ##  Instalación manual con Helm
 Para usar este chart ejecute estos comandos:
 
@@ -135,7 +139,5 @@ postgresql:
     persistence:
       enabled: true
       size: 1Gi   # dev: 1Gi  |  prod: 5Gi
+```
 
-## Vídeo de demostración
-
-https://youtu.be/lxmC-G6Z8x4
