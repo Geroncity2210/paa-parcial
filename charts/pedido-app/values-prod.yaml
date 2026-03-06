@@ -15,7 +15,6 @@ backend:
       cpu: "200m"
       memory: "512Mi"
     limits:
-      cpu: "1000m"
       memory: "1Gi"
   hpa:
     minReplicas: 3
