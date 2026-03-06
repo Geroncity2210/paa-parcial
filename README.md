@@ -5,9 +5,16 @@
 - Juan Pablo Moreno Patarroyo: AKA Geroncity2210
 
 ##  Instalación manual con Helm
+Para usar este chart ejecute estos comandos:
 
-parte de Juanito
+```bash
+# este agrega este repositorio en su helm local para poder instalar los charts
+helm repo add <nombre-repo> https://Geroncity2210.github.io/paa-parcial/
+# instalar un release del chart de nombre <nombre-release>
+helm install <nombre-release> <nombre-repo>/pedido-app
 
+```
+Opcionalmente se puede pasar un fichero yaml con valores propios para editar la configuración disponible 
 ## Configuración de valores por ambiente
 
 ### `values.yaml` — base compartida
