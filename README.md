@@ -1,3 +1,9 @@
+#Integrantes:
+
+- David Esteban Díaz Vargas: AKA Esteban7108
+- Diego Norberto Diaz Algarin: AKA 1JuL
+- Juan Pablo Moreno Patarroyo: AKA Geroncity2210
+
 ##  Instalación manual con Helm
 
 parte de Juanito
