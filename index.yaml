@@ -1,0 +1,18 @@
+apiVersion: v1
+entries:
+  pedido-app:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2026-03-05T18:50:49.1914564-05:00"
+    dependencies:
+    - name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.3.0
+    description: A Helm chart for Kubernetes
+    digest: e2719bfb8cd9d129157ae310b88159673fc8241780501e95457ae76a828ac0a3
+    name: pedido-app
+    type: application
+    urls:
+    - https://Geroncity2210.github.io/paa-parcial/charts/pedido-app-0.1.0.tgz
+    version: 0.1.0
+generated: "2026-03-05T18:50:49.172587-05:00"
