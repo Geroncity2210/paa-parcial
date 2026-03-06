@@ -106,8 +106,7 @@ La definición de prod es idéntica cambiando `name: pedido-app-prod`, `instance
 | **dev** | `http://dev.127.0.0.1.sslip.io/` | `http://dev.127.0.0.1.sslip.io/api` |
 | **prod** | `http://prod.127.0.0.1.sslip.io/` | `http://prod.127.0.0.1.sslip.io/api` |
 
-> Los hosts se resuelven automáticamente a `127.0.0.1` vía `sslip.io`, lo que facilita pruebas locales con Minikube o kind sin modificar `/etc/hosts`.
-
+> Los hosts se resuelven automáticamente a `127.0.0.1` vía `sslip.io`, lo que facilita pruebas locales con Minikube.
 
 ##  Horizontal Pod Autoscaler (HPA)
 
