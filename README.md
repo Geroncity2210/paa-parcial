@@ -1,4 +1,4 @@
-#Integrantes:
+# Integrantes:
 
 - David Esteban Díaz Vargas: AKA Esteban7108
 - Diego Norberto Diaz Algarin: AKA 1JuL
