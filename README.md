@@ -124,11 +124,11 @@ El backend escala automáticamente según uso de CPU. Configuración por ambient
 PostgreSQL usa un `PersistentVolumeClaim` para que los datos sobrevivan reinicios del pod:
 ```yaml
 postgresql:
-
-## Vídeo de demostración
-
-https://youtu.be/lxmC-G6Z8x4
   primary:
     persistence:
       enabled: true
       size: 1Gi   # dev: 1Gi  |  prod: 5Gi
+
+## Vídeo de demostración
+
+https://youtu.be/lxmC-G6Z8x4
