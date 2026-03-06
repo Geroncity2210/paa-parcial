@@ -6,6 +6,9 @@ global:
     password: "root"
     database: animales-db
 
+ingress:
+  host: prod.127.0.0.1.sslip.io
+
 frontend:
   replicaCount: 2
   image:
